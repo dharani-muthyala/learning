@@ -1,0 +1,5 @@
+Final Total: 5350.0
+Total Discount: 500.0
+Rice Tax: 100.0
+Perfume Tax: 540.0
+Soap Tax: 10.0

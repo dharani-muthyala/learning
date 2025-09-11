@@ -1,0 +1,6 @@
+Top Performer: Anjali with Average: 84.67
+
+--- Student Performance Report ---
+Anjali: Grade A (Avg: 84.67)
+Rahul: Grade B (Avg: 65.67)
+Neha: Grade F (Avg: 38.0)

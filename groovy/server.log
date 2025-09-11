@@ -1,0 +1,4 @@
+[INFO] 2024-04-07 12:30:14 - User login success
+[ERROR] 2024-04-07 12:35:01 - NullPointerException at line 45
+[WARN] 2024-04-07 12:40:00 - Low disk space
+[ERROR] 2024-04-07 12:50:10 - OutOfMemoryError in module X

@@ -1,0 +1,2 @@
+[ERROR] 2024-04-07 12:35:01 - NullPointerException at line 45
+[ERROR] 2024-04-07 12:50:10 - OutOfMemoryError in module X
