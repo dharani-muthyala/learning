@@ -1,0 +1,31 @@
+POST http://127.0.0.1:5000/icecreams
+Content-Type: application/json
+
+{
+    "id": 8,
+    "flavour": "strawberry",
+    "parlour": "magic restro"
+}
+
+### Get all ice creams
+GET http://127.0.0.1:5000/icecreams
+Accept: application/json
+
+### Get Ice Cream by ID
+GET http://localhost:5000/icecreams?id=2
+Content-Type: application/json
+
+### Update Ice Cream Flavour and parlour
+PUT http://localhost:5000/icecreams/2
+Content-Type: application/json
+
+{
+    
+    "flavour": "grapes",
+    "parlour": "cream town"
+}    
+
+### Delete an ice cream by ID
+DELETE http://127.0.0.1:5000/icecreams/8
+
+Content-Type: application/json
