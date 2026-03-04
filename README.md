@@ -55,3 +55,22 @@ Permissions control access levels for owner, group, and others.
 chmod modifies access rights.
 chown modifies file ownership.
 Permission structure directly impacts file security and execution capability.
+
+# grep and Regex
+**Creating sample log file**
+echo "error occurred" >> log.txt
+echo "success message" >> log.txt
+echo "warning message" >> log.txt    # Created a sample file log.txt containing multiple log messages to simulate real-world log analysis.
+
+**Searching for a specific word** 
+grep "error" log.txt         # Searches for lines containing the word "error" in the file. output should be: error occurred
+**Observation:**
+grep filters and displays only matching lines from the file.
+**Using Extended Regular Expressions (Multiple Conditions)**
+grep -E "error|warning" log.txt        
+#Uses extended regular expression with the | operator (OR condition) to search for lines containing either "error" or "warning". 
+**Output:**
+error occurred
+warning message 
+**Observation:**
+-E enables extended regex, allowing multiple pattern matching using the OR (|) operator.
