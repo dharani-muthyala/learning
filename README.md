@@ -28,3 +28,30 @@ Acts like a shortcut
 Breaks if original file is deleted
 Can span across file systems
 
+# File Permissions
+ls -l          
+**Displays detailed information about files including:**
+File type
+Permission structure (r, w, x)
+Owner
+Group
+File size
+**Example Output:**
+-rw-r--r-- 1 user user 0 Mar 3 10:00 file.txt
+**Modifying File permissions**
+chmod 755 file.txt     # Changes the file permissions using numeric mode.
+**Permission Breakdown:**
+7 - rwx (Owner: read, write, execute)
+5 - r-x (Group: read, execute)
+5 - r-x (Others: read, execute)        # After modification, verify using: ls -l  command
+**Chainging file ownership**
+chown $(whoami) file.txt
+
+#Changes the ownership of file.txt to the currently logged-in user.               
+#$(whoami) dynamically fetches the current username.
+#Ensures correct ownership of the file.
+**Key Observations**
+Permissions control access levels for owner, group, and others.
+chmod modifies access rights.
+chown modifies file ownership.
+Permission structure directly impacts file security and execution capability.
