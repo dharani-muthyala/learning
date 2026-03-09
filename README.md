@@ -135,3 +135,26 @@ After executing this command, the terminal session switches to root mode, allowi
 Root user has full system privileges.
 sudo allows controlled administrative access.
 Root access should be used carefully to avoid system misconfiguration.
+
+
+# How To Manage Linux Services
+**Basic info about init systems**
+In a full Linux system the init system (like systemd or System V init) manages services.
+In Codespaces, check what process started the container.
+Run:
+ps -p 1
+You will see the PID 1 process (the first process in the system).
+This shows what is acting like the init process in the container.
+**Understanding Services (Similar to systemd Units)**
+service --status-all       # List available services.
+**Example output:**
+[ + ] ssh
+[ - ] rsync
+[ - ] dbus
+"-" --> Stopped service
+"+" --> Running service   # This is equivalent to checking units with systemctl.
+# Installing a Service (Apache)
+**Installing web server**
+sudo apt update
+sudo apt install apache2 -y     # This installs: Apache HTTP Server
+
