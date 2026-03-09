@@ -74,3 +74,33 @@ error occurred
 warning message 
 **Observation:**
 -E enables extended regex, allowing multiple pattern matching using the OR (|) operator.
+
+# User Management(creating local user account in linux)
+**Creating a new user**
+sudo useradd testuser      # Creates a new local user named testuser.
+**Setting password for user**
+sudo passwd testuser
+**Observation:**
+The system prompted:
+New password:
+Retype new password:
+After entering and confirming the password, the message displayed:
+passwd: password updated successfully
+**Verifying user creation**
+id testuser       # Displays user ID (UID), group ID (GID), and associated groups.
+**Modify a user**
+**Add user to a group**
+sudo usermod -aG sudo testuser    # To modify user properties we use usermod.
+Explanation:
+usermod → modify user
+-a --> append
+-G --> group
+This adds testuser to the sudo group.
+**Change user name**
+sudo usermod -l newusername testuser    # Changes the username from testuser -> newusername.
+**Change user home directory**
+sudo usermod -d /home/newdir testuser    # Changes the home directory.
+**Delete a user**
+sudo userdel testuser    # This removes the user account.
+**Delete user with home directory**
+sudo userdel -r testuser   # -r removes the user's home directory and mail spool.
