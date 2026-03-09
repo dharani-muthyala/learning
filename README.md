@@ -104,3 +104,34 @@ sudo usermod -d /home/newdir testuser    # Changes the home directory.
 sudo userdel testuser    # This removes the user account.
 **Delete user with home directory**
 sudo userdel -r testuser   # -r removes the user's home directory and mail spool.
+
+# Resource limits
+**Checking Current Resource Limits**
+ulimit -a        # Displays all the resource limits configured for the current user session.
+Example Output Includes:
+Maximum number of user processes
+Maximum file size
+Maximum open files
+CPU time limits
+**Observation:**
+This command helps identify how many system resources are allowed for the current user.
+**Temporarily Modifying Process Limits**
+ulimit -u 50      # Sets the maximum number of processes that the current user can create to 50.
+**Observation:**
+This change applies only to the current terminal session and is not permanent.
+**Resetting the Limit**
+ulimit -u unlimited      # Removes the previously set limit and restores the default system behavior.
+
+# Root Access
+**Checking Current Logged-in User**
+whoami         # Displays the username of the current logged-in user.
+**Observation:**
+Used to verify whether the session is running under a normal user or root user.
+**Switching to Root User**
+sudo su        # Grants temporary root (superuser) access using sudo privileges.
+**Observation:**
+After executing this command, the terminal session switches to root mode, allowing administrative commands to be executed.
+**Key Learning**
+Root user has full system privileges.
+sudo allows controlled administrative access.
+Root access should be used carefully to avoid system misconfiguration.
