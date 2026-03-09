@@ -193,3 +193,16 @@ ssh
 rsync
 These scripts control service startup in older init systems.
 
+# Where Service Files Are Stored
+**Check service scripts:**
+ls /etc/init.d/
+**Example:**
+apache2
+ssh
+rsync
+**View the Apache service script:**
+cat /etc/init.d/apache2
+**This file defines:**
+how the service starts
+how it stops
+restart logic
