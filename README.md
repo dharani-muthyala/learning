@@ -157,4 +157,39 @@ service --status-all       # List available services.
 **Installing web server**
 sudo apt update
 sudo apt install apache2 -y     # This installs: Apache HTTP Server
+**Checking Service Status**
+Equivalent of systemctl status.
+Run:
+service apache2 status
+You will see whether the service is running or stopped.
+
+# Starting a Service
+**Start the Apache service:**
+sudo service apache2 start
+**Verify:**
+service apache2 status
+
+# Stopping a Service
+**Stop the web server:**
+sudo service apache2 stop
+**Check again:**
+service apache2 status
+
+# Restarting a Service
+**Restart the service:**
+sudo service apache2 restart
+**This does:**
+stop -> start
+
+# Auto-Start Services (Enable / Disable)
+**In full systemd systems you would use:**
+systemctl enable apache2
+In Codespaces you can inspect startup scripts instead.
+**Check startup configuration:**
+ls /etc/init.d/
+**You will see scripts like:**
+apache2
+ssh
+rsync
+These scripts control service startup in older init systems.
 
