@@ -259,3 +259,23 @@ sudo cp /etc/init.d/apache2 /etc/init.d/apache2-custom
 sudo nano /etc/init.d/apache2-custom
 This simulates modifying service behavior similar to overriding a systemd unit file.
 
+# Reloading systemd (daemon-reload) and Why It Is Needed
+When a systemd unit file is modified, the changes are not automatically detected.
+To apply the changes, systemd must reload its configuration.
+**Command used in real systems:**
+systemctl daemon-reload
+**This command tells systemd to:**
+Re-read all unit files and update its configuration.
+**Typical workflow:**
+Edit service file
+systemctl daemon-reload 
+systemctl restart service
+This ensures the new configuration is applied.
+
+# Codespaces (Equivalent):
+Because systemd is not available in Codespaces, the equivalent approach is restarting the service after modifying its script.
+**Edit the service script:**
+sudo nano /etc/init.d/apache2
+**Restart the service:**
+sudo service apache2 restart
+Restarting the service makes the system apply the updated configuration.
