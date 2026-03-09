@@ -206,3 +206,22 @@ cat /etc/init.d/apache2
 how the service starts
 how it stops
 restart logic
+
+# Understanding Service File Structure
+**Open the service file:**
+nano /etc/init.d/apache2
+**You will see sections like:**
+start)
+stop)
+restart)
+status)
+These define how the service behaves.
+
+# Reload vs Restart
+**Restart Apache:**
+sudo service apache2 restart
+**Reload configuration:**
+sudo service apache2 reload
+**Difference:**
+restart -->	stop + start
+reload --> reload config without full restart
