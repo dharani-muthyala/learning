@@ -225,3 +225,37 @@ sudo service apache2 reload
 **Difference:**
 restart -->	stop + start
 reload --> reload config without full restart
+
+# Monitor Running Services
+**Check Apache process:**
+ps aux | grep apache
+You will see running worker processes.
+
+# Test the Web Server
+**Start Apache:**
+sudo service apache2 start
+**Check locally:**
+curl localhost
+You should see Apache default HTML page.
+
+# Editing and Overriding systemd Unit Files
+Since systemd is not running in Codespaces, the systemctl command cannot be used.
+Instead, service behavior can be examined and modified through init scripts.
+**View service scripts**
+ls /etc/init.d/
+**Example output:**
+apache2
+ssh
+rsync
+**Inspect a service script**
+cat /etc/init.d/apache2
+**This script contains the logic for**:
+starting the service
+stopping the service
+restarting the service
+**Create a custom copy (simulate overriding)**
+sudo cp /etc/init.d/apache2 /etc/init.d/apache2-custom
+**Edit the copied file:**
+sudo nano /etc/init.d/apache2-custom
+This simulates modifying service behavior similar to overriding a systemd unit file.
+
