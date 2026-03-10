@@ -368,3 +368,17 @@ podman images          # List images
 podman rmi quart-api   # remove image
 podman search nginx    # search images
 podman pull nginx      # pull image
+
+# Run the container with volume 
+podman run -d \
+-p 5000:5000 \
+-v $(pwd)/data:/app/data \
+quart-api
+**Command Explanation**
+-p 5000:5000
+Maps host port 5000 to container port 5000 so the API can be accessed.
+-v $(pwd)/data:/app/data
+Creates a volume mount.
+$(pwd)/data --> folder on the host system
+/app/data --> folder inside the container
+This allows data to persist outside the container.
