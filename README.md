@@ -369,6 +369,21 @@ podman rmi quart-api   # remove image
 podman search nginx    # search images
 podman pull nginx      # pull image
 
+# Pulling Container Images
+In some environments, Podman may not allow the use of short image names such as:
+podman pull nginx
+This happens when unqualified search registries are not configured in the system. In such cases, Podman cannot determine which container registry should be used to download the image.
+**Pulling an Image Using Full Image Path**
+Run the following command:
+podman pull docker.io/library/nginx
+**Command Explanation**
+podman pull
+Downloads a container image from a container registry.
+docker.io
+The container registry where the image is stored. Most official images are hosted on Docker Hub.
+library/nginx
+Represents the official Nginx image repository within Docker Hub.
+
 # Run the container with volume 
 podman run -d \
 -p 5000:5000 \
