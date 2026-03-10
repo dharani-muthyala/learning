@@ -279,3 +279,76 @@ sudo nano /etc/init.d/apache2
 **Restart the service:**
 sudo service apache2 restart
 Restarting the service makes the system apply the updated configuration.
+
+
+# Podman container management
+**How to install podman**
+sudo apt update
+sudo apt install podman -y
+**To check installation**
+podman --version   # can able to see the podman installed version
+**To check podman info**
+podman info
+
+# Running a Quart API Using Podman
+This demo shows how to run a simple Python API built with the Quart framework using Podman.
+**The goal is to learn how Podman can:**
+build a container image
+run an application inside a container
+manage the running container
+**Build the Container Image**
+First, we need to build a container image using the Containerfile.
+**Run the following command:**
+podman build -t quart-api .
+**What this command does**
+podman build
+Builds a container image using the instructions written in the Containerfile.
+-t quart-api
+Gives a name (tag) to the image. Here the image name will be quart-api.
+.
+The dot means current folder. Podman will use the files in this folder (like app.py, requirements.txt, and Containerfile) to build the image.
+After running this command, Podman creates a container image for the application.
+**To check if the image was created successfully, run:**
+podman images
+**What this command does**
+podman images
+Shows all container images stored on the system. You should see the quart-api image in the list.
+Run the Application Container
+After building the image, we can start a container from that image.
+**Run the command:**
+podman run -d -p 5000:5000 quart-api
+**What this command does**
+podman run
+Creates and starts a container from the specified image.
+-d
+Runs the container in the background (detached mode).
+-p 5000:5000
+Connects the container port to the host port.
+First 5000 --> port on your system
+Second 5000 --> port inside the container where the API runs
+This allows you to access the API from your browser.
+quart-api
+This is the name of the image used to create the container.
+
+# Check Running Containers
+To see if the container is running, use:
+podman ps
+**What this command does**
+podman ps
+Shows all currently running containers.
+**It displays details like:**
+container ID
+image name
+running status
+port mapping
+This helps confirm that the application container started successfully.
+Codespaces automatically detects open ports and provides a forwarded public URL.
+**When the container starts, Codespaces will show a notification similar to:**
+Port 5000 forwarded
+You can also view this in the Ports tab in the Codespaces interface.
+The forwarded link will look similar to this:
+https://<codespace-name>-5000.app.github.dev
+Open this link in the browser to access the running API.
+If the application is running correctly, you should see the response:
+{"message":"Podman API running"}
+
