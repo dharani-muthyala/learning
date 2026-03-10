@@ -362,3 +362,9 @@ podman restart <container_id> or <container_name>    # restarts container
 podman logs <container_id> or <container_name>       # View logs
 podman inspect <container_id>                        # inspect container
 podman rm <container_id>                             # remove container
+
+# Podman commands for managing Images
+podman images          # List images
+podman rmi quart-api   # remove image
+podman search nginx    # search images
+podman pull nginx      # pull image
