@@ -352,3 +352,13 @@ Open this link in the browser to access the running API.
 If the application is running correctly, you should see the response:
 {"message":"Podman API running"}
 
+
+# Podman commands for managing Containers
+podman ps                                            # List Running containers
+podman ps -a                                         # List all containers including running and stopped
+podman stop <container_id> or <container_name>       # Stop container
+podman start <container_id> or <container_name>      # start container
+podman restart <container_id> or <container_name>    # restarts container
+podman logs <container_id> or <container_name>       # View logs
+podman inspect <container_id>                        # inspect container
+podman rm <container_id>                             # remove container
