@@ -451,3 +451,9 @@ conda activate ./env
 conda install numpy
 **You can also install multiple packages:**
 conda install pandas matplotlib
+
+# Listing Packages and Environments
+**List all environments:**
+conda env list
+**List installed packages in the current environment:**
+conda list
