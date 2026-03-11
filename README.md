@@ -431,3 +431,17 @@ Dependency Management - Automatically installs required dependencies for package
 Version Control - Easily manage different Python or package versions.
 Cross-Platform Support - Works on Linux, macOS, and Windows.
 Using Conda helps avoid conflicts when multiple projects require different package versions.
+
+# Working with Environments
+**Creating and Activating an Environment**
+**Create a new environment with a specific Python version:**
+conda create --name myenv python=3.10
+**Activate the environment:**
+conda activate myenv
+**Deactivate the environment:**
+conda deactivate
+**Specifying a Location for an Environment**
+Instead of using a name, we can create an environment at a specific path.
+conda create --prefix ./env python=3.10
+**Activate the environment:**
+conda activate ./env
