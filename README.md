@@ -457,3 +457,9 @@ conda install pandas matplotlib
 conda env list
 **List installed packages in the current environment:**
 conda list
+
+# Deleting a Package or Environment
+**Remove a package:**
+conda remove numpy
+**Delete an environment:**
+conda remove --name myenv --all
