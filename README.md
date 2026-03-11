@@ -476,3 +476,17 @@ This command downloads the NumPy package and its required dependencies into the 
 **Example: Installing Multiple Packages**
 conda install pandas matplotlib
 Conda automatically resolves and installs all required dependencies.
+
+# Conda Channels
+A channel is a location where Conda searches for packages.
+Channels host collections of packages that can be installed using Conda.
+By default, Conda installs packages from the default channel provided by Anaconda.
+**Example: Installing from a Specific Channel**
+conda install -c conda-forge numpy
+**Here:**
+-c means channel
+conda-forge is a popular community-maintained channel.
+**Example: View Configured Channels**
+conda config --show channels
+**Example: Add a New Channel**
+conda config --add channels conda-forge
