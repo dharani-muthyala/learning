@@ -392,8 +392,6 @@ quart-api
 **Command Explanation**
 -p 5000:5000
 Maps host port 5000 to container port 5000 so the API can be accessed.
--v $(pwd)/data:/app/data
-Creates a volume mount.
-$(pwd)/data --> folder on the host system
-/app/data --> folder inside the container
-This allows data to persist outside the container.
+-v $(pwd)/data:/app/data   # folder on the host system and folder inside the container
+Creates a volume mount.    # This allows data to persist outside the container.
+
