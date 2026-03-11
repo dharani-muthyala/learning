@@ -395,3 +395,26 @@ Maps host port 5000 to container port 5000 so the API can be accessed.
 -v $(pwd)/data:/app/data   # folder on the host system and folder inside the container
 Creates a volume mount.    # This allows data to persist outside the container.
 
+# Anaconda concepts
+**Installing Miniconda**
+To work with Conda environments for Python development, install Miniconda, which is a lightweight installer for Conda.
+**Download the Miniconda Installer**
+**1.Run the following command in the terminal to download the installer:**
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+**2.Run the Installer**
+**Execute the downloaded script:**
+bash Miniconda3-latest-Linux-x86_64.sh
+**Follow the installation prompts:**
+Press Enter to review the license agreement
+Type yes to accept the license
+Press Enter to accept the default installation location
+
+**3.Initialize Conda**
+**Reload the shell configuration so that Conda becomes available in the terminal:**
+source ~/.bashrc
+
+**4.Verify the Installation**
+**Check whether Conda is installed successfully:**
+conda --version
+If the Conda version is displayed, the installation was successful and we can start creating and managing environments.
