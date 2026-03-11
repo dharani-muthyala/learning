@@ -418,3 +418,16 @@ source ~/.bashrc
 **Check whether Conda is installed successfully:**
 conda --version
 If the Conda version is displayed, the installation was successful and we can start creating and managing environments.
+
+
+# Conda Basics
+**What is Conda?**
+Conda is an open-source package manager and environment manager used to install, manage, and update software packages and their dependencies.
+It allows developers to create isolated environments for different projects so that packages and Python versions do not conflict with each other.
+**Why use Conda?**
+**Conda provides several benefits:**
+Environment Isolation - Create separate environments for different projects.
+Dependency Management - Automatically installs required dependencies for packages.
+Version Control - Easily manage different Python or package versions.
+Cross-Platform Support - Works on Linux, macOS, and Windows.
+Using Conda helps avoid conflicts when multiple projects require different package versions.
