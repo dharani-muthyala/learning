@@ -463,3 +463,16 @@ conda list
 conda remove numpy
 **Delete an environment:**
 conda remove --name myenv --all
+
+# Conda Packages
+**A Conda package is a compressed file that contains:**
+The software or library (for example: NumPy, Pandas)
+Metadata about the package
+Dependency information required for installation
+Conda packages allow you to easily install, update, and remove libraries in your environment.
+**Example: Installing a Package**
+conda install numpy
+This command downloads the NumPy package and its required dependencies into the active environment.
+**Example: Installing Multiple Packages**
+conda install pandas matplotlib
+Conda automatically resolves and installs all required dependencies.
