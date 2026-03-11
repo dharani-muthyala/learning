@@ -445,3 +445,9 @@ Instead of using a name, we can create an environment at a specific path.
 conda create --prefix ./env python=3.10
 **Activate the environment:**
 conda activate ./env
+
+# Installing Packages into an Environment
+**Install a package inside the active environment:**
+conda install numpy
+**You can also install multiple packages:**
+conda install pandas matplotlib
