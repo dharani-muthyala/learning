@@ -556,3 +556,14 @@ This command reads the file and installs all required dependencies automatically
 To share an environment, export it to a YAML file.
 conda env export > environment.yml
 This saves all environment dependencies into a configuration file that can be shared with others.
+
+# Deploying Environments
+**Setting up Conda with JupyterLab**
+**Install JupyterLab inside a Conda environment:**
+conda install jupyterlab
+**Launch JupyterLab:**
+jupyter lab
+**This opens a browser interface where you can:**
+Create notebooks
+Run Python code interactively
+Work with Conda environments for development and analysis
