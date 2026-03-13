@@ -490,3 +490,24 @@ conda-forge is a popular community-maintained channel.
 conda config --show channels
 **Example: Add a New Channel**
 conda config --add channels conda-forge
+
+# Searching for Packages
+You can search for available packages in Conda repositories before installing them.
+conda search numpy
+**This command displays:**
+Available versions of the package
+The channel providing the package
+Compatible builds
+**Example:**
+conda search pandas
+This helps identify the correct package version before installation.
+
+# Installing a Package from a Specific Channel
+Conda allows installing packages from a specific channel.
+**Example:**
+conda install -c conda-forge numpy
+**Explanation:**
+-c --> Specifies the channel
+conda-forge --> Community-maintained channel containing many packages
+This installs the package from the specified channel instead of the default channel.
+
