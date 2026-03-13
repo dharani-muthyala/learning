@@ -567,3 +567,27 @@ jupyter lab
 Create notebooks
 Run Python code interactively
 Work with Conda environments for development and analysis
+**Steps to follow with an example:**
+**Create a Conda Environment for JupyterLab**
+Create a dedicated environment that contains JupyterLab and the required kernel management package.
+conda create -n jupyter jupyterlab nb_conda_kernels
+**Explanation:**
+-n jupyter --> Creates a new environment named jupyter
+jupyterlab --> Installs JupyterLab for interactive development
+nb_conda_kernels --> Allows JupyterLab to automatically detect and use other Conda environments as kernels
+
+**Activate the Environment**
+Activate the newly created environment before starting JupyterLab.
+conda activate jupyter
+After activation, the terminal prompt will display the environment name.
+**Launch JupyterLab**
+Start the JupyterLab server.
+jupyter lab
+This command launches JupyterLab and opens it in the browser.
+**Create a New Notebook**
+**Inside the JupyterLab interface:**
+Select File
+Click New
+Choose Notebook
+Select the Python kernel
+A new notebook will open where Python code can be written and executed interactively.
