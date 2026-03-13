@@ -535,3 +535,24 @@ This converts the directory into a local Conda channel.
 **Step 4: Add the local channel**
 conda config --add channels file:///path/to/local-channel
 Now packages stored in this directory can be installed using Conda.
+
+# Sharing and Deploying Environments
+**Environment Files**
+Environment files store environment configuration and dependencies.
+Example file: environment.yml
+name: myenv
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+This file allows environments to be recreated easily.
+
+**Creating an Environment from a File**
+You can create an environment using an environment file.
+conda env create -f environment.yml
+This command reads the file and installs all required dependencies automatically.
+
+**Exporting an Environment to a File**
+To share an environment, export it to a YAML file.
+conda env export > environment.yml
+This saves all environment dependencies into a configuration file that can be shared with others.
