@@ -680,3 +680,26 @@ conda build <recipe-folder>
 **Output:**
 A .tar.bz2 or .conda package file is generated
 Stored in the Conda build directory
+
+# REST API using FastAPI with Conda
+This project demonstrates a basic REST API built using FastAPI within a Conda environment.
+The implementation focuses on understanding and practicing GET API endpoints.
+# Setup Instructions
+**Create Environment**
+conda create -n api_env python=3.10
+**Activate Environment**
+conda activate api_env
+**Install Dependencies**
+pip install fastapi uvicorn
+**Run the Application**
+**Start the server using Uvicorn:**
+uvicorn main:app --reload
+**API Endpoints**
+**The following GET endpoints are implemented:**
+/ -> Returns a welcome message
+/users -> Returns a list of users
+**Dependencies**
+**Generate dependency file:**
+pip freeze > requirements.txt
+**Install dependencies:**
+pip install -r requirements.txt
