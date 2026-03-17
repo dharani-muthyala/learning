@@ -591,3 +591,92 @@ Click New
 Choose Notebook
 Select the Python kernel
 A new notebook will open where Python code can be written and executed interactively.
+
+# Conda Essentials
+**Conda Directory Structure**
+After installing Conda, a directory structure is created to manage environments and packages efficiently.
+**Key Directories:**
+envs/ -> Stores all created environments
+pkgs/ -> Contains downloaded package files
+condabin/ -> Contains Conda executable scripts
+etc/ -> Configuration and activation scripts
+lib/, bin/ -> Core binaries and libraries
+
+# What’s Inside the Conda Directory
+**The Conda installation directory contains:**
+Environments (envs/)
+Each environment has its own Python interpreter and installed packages.
+Package Cache (pkgs/)
+Stores downloaded packages to avoid re-downloading.
+Configuration Files
+Includes .condarc for managing channels and settings.
+Scripts and Binaries
+Used for executing Conda commands and managing environments.
+
+# Installing a New Environment
+Conda allows creating isolated environments for different projects.
+**Create Environment:**
+conda create -n myenv python=3.10
+**Activate Environment:**
+conda activate myenv
+**Deactivate Environment:**
+conda deactivate
+**What Happens When an Environment Activates**
+**When an environment is activated:**
+The PATH variable is updated to point to the selected environment
+The environment’s Python interpreter becomes active
+Installed packages inside that environment are made available
+System uses environment-specific dependencies instead of global ones
+This ensures isolation between different projects.
+
+# Conda Activation Scripts
+Conda supports activation and deactivation scripts that run automatically.
+**Purpose:**
+Set environment variables
+Configure runtime settings
+Prepare dependencies for execution
+**Location:**
+Scripts are typically stored in:
+<env>/etc/conda/activate.d/
+<env>/etc/conda/deactivate.d/
+
+# Building Packages
+**What Are Conda Recipes**
+A Conda recipe is a set of instructions used to build a package.
+**It defines:**
+Package name and version
+Dependencies
+Source code location
+Build steps
+**Structure of a Conda Recipe**
+A recipe usually contains:
+meta.yaml -> Package metadata (name, version, dependencies)
+build.sh (Linux/macOS) → Build script
+bld.bat (Windows) → Build script
+**Example (meta.yaml):**
+package:
+  name: mypackage
+  version: "1.0"
+requirements:
+  run:
+    - python
+
+**Public Recipes**
+Public Conda recipes are available in repositories such as:
+conda-forge
+default Conda channels
+These recipes are maintained by the community and provide ready-to-use package configurations.
+**They help users:**
+Install packages easily
+Understand how packages are built
+Contribute to open-source ecosystem
+
+**How to Build a Package**
+To build a Conda package, you need conda-build.
+**Install conda-build:**
+conda install conda-build
+**Build the package:**
+conda build <recipe-folder>
+**Output:**
+A .tar.bz2 or .conda package file is generated
+Stored in the Conda build directory
