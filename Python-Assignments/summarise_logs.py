@@ -48,6 +48,7 @@ def summarise_logs(logs, filter_level=None):
     latest_error = None
 
     if error_logs:
+        # Using lambda(a one-line function) to extract timestamp from each log and find the most recent one
         latest_log = max(error_logs, key=lambda x: x.get("timestamp", ""))
         latest_error = latest_log.get("message")
 
