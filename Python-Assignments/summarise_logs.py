@@ -60,7 +60,7 @@ def summarise_logs(logs, filter_level=None):
 # ─────────────────────────────────────────────
 #  Tests
 # ─────────────────────────────────────────────
-
+# counts should be correct
 def test_basic_counts():
     result = summarise_logs(logs)
     assert result["counts"].get("INFO")  == 1, "INFO count should be 1"
@@ -68,11 +68,23 @@ def test_basic_counts():
     assert result["counts"].get("ERROR") == 2, "ERROR count should be 2"
     print("\u2713 test_basic_counts passed")      # Unicode(\u2713) tick mark for success indication
 
+# latest_error should be the message of the most recent ERROR log
 def test_latest_error():
     result = summarise_logs(logs)
     assert result["latest_error"] == "Timeout on request", \
         f"Expected 'Timeout on request', got '{result['latest_error']}'"
     print("\u2713 test_latest_error passed")
+
+# none_level_skipped should skip logs with None level
+def test_none_level_skipped():
+    test_logs = [
+        {"timestamp": "2024-01-01T10:00:00", "level": None,   "message": "Ghost entry"},
+        {"timestamp": "2024-01-01T10:01:00", "level": "INFO", "message": "Normal entry"},
+    ]
+    result = summarise_logs(test_logs)
+    assert result["counts"].get("INFO") == 1, "INFO count should be 1"
+    assert None not in result["counts"],      "None should not appear as a key"
+    print("\u2713 test_none_level_skipped passed")
 
 
 # ─────────────────────────────────────────────
