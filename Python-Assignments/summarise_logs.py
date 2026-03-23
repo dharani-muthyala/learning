@@ -68,7 +68,11 @@ def test_basic_counts():
     assert result["counts"].get("ERROR") == 2, "ERROR count should be 2"
     print("\u2713 test_basic_counts passed")      # Unicode(\u2713) tick mark for success indication
 
-
+def test_latest_error():
+    result = summarise_logs(logs)
+    assert result["latest_error"] == "Timeout on request", \
+        f"Expected 'Timeout on request', got '{result['latest_error']}'"
+    print("\u2713 test_latest_error passed")
 
 
 # ─────────────────────────────────────────────
@@ -79,7 +83,7 @@ if __name__ == "__main__":
     print("Running tests...\n")
 
     test_basic_counts()
-
+    test_latest_error()
 
     print("\nAll tests passed!")
     print("\nSummary of sample logs:")
