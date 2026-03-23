@@ -86,6 +86,15 @@ def test_none_level_skipped():
     assert None not in result["counts"],      "None should not appear as a key"
     print("\u2713 test_none_level_skipped passed")
 
+# when no ERROR logs exist, latest_error should be None
+def test_no_errors_returns_none():
+    test_logs = [
+        {"timestamp": "2024-01-01T10:00:00", "level": "INFO", "message": "All good"},
+        {"timestamp": "2024-01-01T10:01:00", "level": "WARN", "message": "Watch out"},
+    ]
+    result = summarise_logs(test_logs)
+    assert result["latest_error"] is None, "latest_error should be None when no ERRORs exist"
+    print("\u2713 test_no_errors_returns_none passed")
 
 # ─────────────────────────────────────────────
 #  Run
