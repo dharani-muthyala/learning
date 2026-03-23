@@ -96,6 +96,22 @@ def test_no_errors_returns_none():
     assert result["latest_error"] is None, "latest_error should be None when no ERRORs exist"
     print("\u2713 test_no_errors_returns_none passed")
 
+# when logs list is empty, counts should be empty and latest_error should be None
+def test_empty_list():
+    result = summarise_logs([])
+    assert result["counts"] == {}, "counts should be empty dict"
+    assert result["latest_error"] is None, "latest_error should be None"
+    print("\u2713 test_empty_list passed")
+
+# Return only ERROR entries when filter_level is set to "ERROR"
+def test_filter_level():
+    result = summarise_logs(logs, filter_level="ERROR")
+    assert result["counts"] == {"ERROR": 2}
+    assert result["latest_error"] == "Timeout on request"
+    print("\u2713 test_filter_level passed")
+
+
+
 # ─────────────────────────────────────────────
 #  Run
 # ─────────────────────────────────────────────
@@ -105,6 +121,10 @@ if __name__ == "__main__":
 
     test_basic_counts()
     test_latest_error()
+    test_none_level_skipped()
+    test_no_errors_returns_none()
+    test_empty_list()
+    test_filter_level()
 
     print("\nAll tests passed!")
     print("\nSummary of sample logs:")
