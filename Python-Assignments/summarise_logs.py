@@ -69,12 +69,34 @@ def test_basic_counts():
     assert result["counts"].get("ERROR") == 2, "ERROR count should be 2"
     print("\u2713 test_basic_counts passed")      # Unicode(\u2713) tick mark for success indication
 
+# when only one ERROR log exists, latest_error should be that message
+def test_single_error():
+    test_logs = [
+        {"timestamp": "2024-01-01T10:00:00", "level": "INFO",  "message": "Start"},
+        {"timestamp": "2024-01-01T10:01:00", "level": "WARN",  "message": "Warning"},
+        {"timestamp": "2024-01-01T10:02:00", "level": "ERROR", "message": "Only error"},
+    ]
+    result = summarise_logs(test_logs)
+    assert result["counts"] == {"INFO": 1, "WARN": 1, "ERROR": 1}
+    assert result["latest_error"] == "Only error"
+    print("\u2713 test_single_error passed")    
+
 # latest_error should be the message of the most recent ERROR log
 def test_latest_error():
     result = summarise_logs(logs)
     assert result["latest_error"] == "Timeout on request", \
         f"Expected 'Timeout on request', got '{result['latest_error']}'"
     print("\u2713 test_latest_error passed")
+
+# when only INFO logs exist, latest_error should be None
+def test_only_info_logs():
+    test_logs = [
+        {"timestamp": "2024-01-01T10:00:00", "level": "INFO", "message": "All good"},
+        {"timestamp": "2024-01-01T10:01:00", "level": "INFO", "message": "Still good"},
+    ]
+    result = summarise_logs(test_logs)
+    assert result["latest_error"] is None
+    print("\u2713 test_only_info_logs passed")
 
 # none_level_skipped should skip logs with None level
 def test_none_level_skipped():
@@ -84,7 +106,7 @@ def test_none_level_skipped():
     ]
     result = summarise_logs(test_logs)
     assert result["counts"].get("INFO") == 1, "INFO count should be 1"
-    assert None not in result["counts"],      "None should not appear as a key"
+    assert None not in result["counts"], "None should not appear as a key"
     print("\u2713 test_none_level_skipped passed")
 
 # when no ERROR logs exist, latest_error should be None
@@ -121,7 +143,9 @@ if __name__ == "__main__":
     print("Running tests...\n")
 
     test_basic_counts()
+    test_single_error()
     test_latest_error()
+    test_only_info_logs()
     test_none_level_skipped()
     test_no_errors_returns_none()
     test_empty_list()
