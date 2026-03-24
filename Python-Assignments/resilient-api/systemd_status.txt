@@ -1,0 +1,24 @@
+● container-my-api.service - Podman container-my-api.service
+     Loaded: loaded (/home/dharani/.config/systemd/user/container-my-api.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-03-24 08:39:39 UTC; 4min 51s ago
+       Docs: man:podman-generate-systemd(1)
+    Process: 4020 ExecStart=/usr/bin/podman start my-api (code=exited, status=0/SUCCESS)
+   Main PID: 4051 (conmon)
+      Tasks: 16 (limit: 9320)
+     Memory: 5.6M (peak: 17.6M)
+        CPU: 96ms
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/container-my-api.service
+             ├─4032 /usr/bin/slirp4netns --disable-host-loopback --mtu=65520 --enable-sandbox --enable-seccomp --enable-ipv6 -c -r 3 -e 4 --netns-type=path /run/user/1000/netns/netns-45233ce1-099c-114a-1408-b96328efad10 tap0
+             ├─4034 rootlessport
+             ├─4040 rootlessport-child
+             └─4051 /usr/bin/conmon --api-version 1 -c e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8 -u e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8 -r /usr/bin/crun -b /home/dharani/.local/share/containers/storage/overlay-containers/e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8/userdata -p /run/user/1000/containers/overlay-containers/e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8/userdata/pidfile -n my-api --exit-dir /run/user/1000/libpod/tmp/exits --full-attach -s -l journald --log-level warning --syslog --runtime-arg --log-format=json --runtime-arg --log --runtime-arg=/run/user/1000/containers/overlay-containers/e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8/userdata/oci-log --conmon-pidfile /run/user/1000/containers/overlay-containers/e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8/userdata/conmon.pid --exit-command /usr/bin/podman --exit-command-arg --root --exit-command-arg /home/dharani/.local/share/containers/storage --exit-command-arg --runroot --exit-command-arg /run/user/1000/containers --exit-command-arg --log-level --exit-command-arg warning --exit-command-arg --cgroup-manager --exit-command-arg systemd --exit-command-arg --tmpdir --exit-command-arg /run/user/1000/libpod/tmp --exit-command-arg --network-config-dir --exit-command-arg "" --exit-command-arg --network-backend --exit-command-arg netavark --exit-command-arg --volumepath --exit-command-arg /home/dharani/.local/share/containers/storage/volumes --exit-command-arg --db-backend --exit-command-arg sqlite --exit-command-arg --transient-store=false --exit-command-arg --runtime --exit-command-arg crun --exit-command-arg --storage-driver --exit-command-arg overlay --exit-command-arg --events-backend --exit-command-arg journald --exit-command-arg container --exit-command-arg cleanup --exit-command-arg e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8
+
+Mar 24 08:39:39 HP systemd[549]: Starting container-my-api.service - Podman container-my-api.service...
+Mar 24 08:39:39 HP podman[4020]: 2026-03-24 08:39:39.492045066 +0000 UTC m=+0.078516652 container init e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8 (image=localhost/api-service:latest, name=my-api, io.buildah.version=1.33.7)
+Mar 24 08:39:39 HP podman[4020]: 2026-03-24 08:39:39.494821747 +0000 UTC m=+0.081293335 container start e4369728aec43c01c746250f9ac7756d43e13ed451d7eb6a6a2df8ada5e8bbc8 (image=localhost/api-service:latest, name=my-api, io.buildah.version=1.33.7)
+Mar 24 08:39:39 HP podman[4020]: my-api
+Mar 24 08:39:39 HP systemd[549]: Started container-my-api.service - Podman container-my-api.service.
+Mar 24 08:39:39 HP my-api[4051]: INFO:     Started server process [1]
+Mar 24 08:39:39 HP my-api[4051]: INFO:     Waiting for application startup.
+Mar 24 08:39:39 HP my-api[4051]: INFO:     Application startup complete.
+Mar 24 08:39:39 HP my-api[4051]: INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
