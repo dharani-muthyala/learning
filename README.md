@@ -703,3 +703,134 @@ uvicorn main:app --reload
 pip freeze > requirements.txt
 **Install dependencies:**
 pip install -r requirements.txt
+
+# Creating a recipe
+**Create a new directory named "my-recipe"**
+mkdir my-recipe
+**create a file named "meta.yaml" inside of it**
+touch my-recipe/meta.yaml
+**populate the yaml file with the package name and version:**
+use "my-recipe" for the package name and "0.0.0" for package version
+vim my-recipe/meta.yaml
+**We have to insert:**
+  package:
+    name: my-recipe
+    version: 0.0.0
+
+
+# Conda Package Building
+**1. The Conda Build Process**
+The Conda build process converts source code into an installable Conda package (.tar.bz2 or .conda).
+**The entire build workflow includes:**
+Creating or generating a recipe
+Preparing the Conda build environment
+Running the build script
+**Producing the final package under:**
+miniconda3/conda-bld/linux-64/
+This process ensures consistent package builds across machines.
+
+**2. Generating Recipes for Python Packages on PyPI**
+Conda can automatically generate recipes for packages available on PyPI.
+**Example (actual command):**
+conda skeleton pypi requests
+This creates a recipe for the requests library.
+**Output folder:**
+requests/
+-- meta.yaml
+-- build.sh
+-- bld.bat
+**meta.yaml**
+Used by all operating systems
+Main recipe file
+**build.sh**
+Used on Linux and macOS
+Shell script for building on Unix systems
+**bld.bat**
+Used on Windows
+Batch script for building on Windows
+
+**3. How to Write or Generate a Recipe**
+A Conda recipe contains the instructions to build a package.
+**It includes:**
+meta.yaml -> package name, version, dependencies
+build.sh -> Linux/Mac build instructions
+bld.bat -> Windows build instructions
+**Example created by Conda:**
+requests/meta.yaml
+**Recipes can be generated automatically using:**
+conda skeleton pypi requests
+
+**4. Generating Recipes With conda skeleton**
+**Command:**
+conda skeleton pypi requests
+This fetches metadata for requests from PyPI and creates a full recipe folder.
+This folder can be directly built using conda build.
+
+**5. Write a Recipe & Build a Package From Scratch**
+**Example manual recipe directory:**
+myexample/
+    meta.yaml
+    build.sh
+**Example meta.yaml:**
+package:
+  name: myexample
+  version: "1.0"
+
+source:
+  url: https://example-files.online-convert.com/r/zip/example.zip
+  sha256: 8f4348f6d95f9b45fc8a62d3b1ee9329f1d6eef21743f30e1917aa7d6b12f1fc
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  summary: "Example demo package"
+**Build the package:**
+conda build myexample/
+**Output appears under:**
+miniconda3/conda-bld/linux-64/myexample-1.0-0.tar.bz2
+
+**6. Add a Source Section to a **Recipe**
+A source section tells Conda where to download the package.
+**Example:**
+source:
+  url: https://files.pythonhosted.org/packages/source/r/requests/requests-2.31.0.tar.gz
+  sha256: 58cd2187b6d1cb2f16d7f20429f4e27b8e4f74b98e5e1c2865b0769c5982d8f
+
+This ensures the exact version is always downloaded.
+**Supported source types:**
+.tar.gz
+.zip
+git_url:
+Local folder
+
+**7. Debugging a Recipe**
+If the build fails, use:
+**Show detailed logs:**
+conda build requests/ --debug
+**Keep the work directory for investigation:**
+conda build requests/ --no-remove-work-dir
+**This allows checking:**
+/miniconda3/conda-bld/work/
+to see build outputs and errors.
+
+**8. Installing a Package**
+**After a package is built using conda build, Conda stores the package file in the local build directory:**
+miniconda3/conda-bld/linux-64/
+This directory contains the final .tar.bz2 or .conda package file.
+**Install the package from the local build directory**
+**To install the newly built package:**
+conda install --use-local requests
+**Explanation:**
+--use-local tells Conda to search for packages inside the local conda-bld/ directory.
+This is useful for installing packages you built yourself, without uploading them to any channel.
+**Example Flow**
+**Build a package:**
+conda build requests/
+**Install the same package locally:**
+conda install --use-local requests
+**After installation, you can check it using:**
+conda list | grep requests
