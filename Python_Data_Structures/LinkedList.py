@@ -75,3 +75,17 @@ def reversePrint(llist):
     # Print in reverse order
     for value in reversed(values):
         print(value)
+
+# Reverse a Linked List
+def reverse(llist):
+    # Write your code here
+    prev = None
+    current = llist
+
+    while current is not None:
+        nxt = current.next
+        current.next = prev
+        prev = current
+        current = nxt
+
+    return prev         
