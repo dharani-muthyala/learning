@@ -87,5 +87,24 @@ def reverse(llist):
         current.next = prev
         prev = current
         current = nxt
+    return prev   
 
-    return prev         
+# Compare Two Linked Lists
+def compare_lists(llist1, llist2):
+    a = llist1
+    b = llist2
+
+    # Traverse both lists
+    while a is not None and b is not None:
+        # If data mismatch -> lists are not identical
+        if a.data != b.data:
+            return 0
+        
+        a = a.next
+        b = b.next
+
+    # If one list is longer than the other -> not identical
+    if a is not None or b is not None:
+        return 0
+
+    return 1      
