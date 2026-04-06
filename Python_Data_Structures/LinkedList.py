@@ -93,18 +93,41 @@ def reverse(llist):
 def compare_lists(llist1, llist2):
     a = llist1
     b = llist2
-
     # Traverse both lists
     while a is not None and b is not None:
         # If data mismatch -> lists are not identical
         if a.data != b.data:
             return 0
-        
         a = a.next
         b = b.next
-
     # If one list is longer than the other -> not identical
     if a is not None or b is not None:
         return 0
+    return 1    
 
-    return 1      
+# Merge two sorted linked lists
+def mergeLists(head1, head2):
+    # Dummy node to build the merged list
+    dummy = SinglyLinkedListNode(0)
+    tail = dummy
+    a = head1
+    b = head2
+    # Merge while both lists have nodes
+    while a is not None and b is not None:
+        if a.data <= b.data:
+            tail.next = a
+            a = a.next
+        else:
+            tail.next = b
+            b = b.next
+        
+        tail = tail.next
+
+    # Attach remaining nodes
+    if a is not None:
+        tail.next = a
+    else:
+        tail.next = b
+
+    # Return head of the merged list
+    return dummy.next  
