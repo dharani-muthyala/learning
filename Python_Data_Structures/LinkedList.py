@@ -147,3 +147,17 @@ def getNode(llist, positionFromTail):
         slow = slow.next
 
     return slow.data
+
+# Remove Duplicates from a Sorted Linked List
+def removeDuplicates(llist):
+    current = llist
+
+    # Traverse the linked list
+    while current is not None and current.next is not None:
+        # If current node and next node have same value -> skip next node
+        if current.data == current.next.data:
+            current.next = current.next.next
+        else:
+            current = current.next
+
+    return llist
