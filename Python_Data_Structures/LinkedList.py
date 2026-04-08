@@ -131,3 +131,19 @@ def mergeLists(head1, head2):
 
     # Return head of the merged list
     return dummy.next  
+
+# Get Node Value
+def getNode(llist, positionFromTail):
+    fast = llist
+    slow = llist
+
+    # Move fast pointer positionFromTail steps ahead
+    for _ in range(positionFromTail):
+        fast = fast.next
+
+    # Move both pointers until fast reaches the end
+    while fast.next is not None:
+        fast = fast.next
+        slow = slow.next
+
+    return slow.data
