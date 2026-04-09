@@ -161,3 +161,17 @@ def removeDuplicates(llist):
             current = current.next
 
     return llist
+
+# cycle detection
+def has_cycle(head):
+    slow = head
+    fast = head
+
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return 1    # cycle found
+
+    return 0            # no cycle
