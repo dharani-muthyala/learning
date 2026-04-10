@@ -175,3 +175,17 @@ def has_cycle(head):
             return 1    # cycle found
 
     return 0            # no cycle
+
+# Find the Merge Point of Two Lists
+def findMergeNode(head1, head2):
+    a = head1
+    b = head2
+
+    # Traverse until both pointers meet
+    while a != b:
+        # If you reach end of a list, switch to the head of the other list
+        a = a.next if a is not None else head2
+        b = b.next if b is not None else head1
+
+    # The node where they meet is the merge point
+    return a.data
