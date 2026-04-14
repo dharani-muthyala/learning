@@ -189,3 +189,39 @@ def findMergeNode(head1, head2):
 
     # The node where they meet is the merge point
     return a.data
+
+# Insert a Node into a Sorted Doubly Linked List
+class DoublyLinkedListNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+def sortedInsert(llist, data):
+    new_node = DoublyLinkedListNode(data)
+
+    # Case 1: Empty list
+    if llist is None:
+        return new_node
+
+    # Case 2: Insert at beginning
+    if data <= llist.data:
+        new_node.next = llist
+        llist.prev = new_node
+        return new_node
+
+    current = llist
+
+    # Traverse to find correct position
+    while current.next is not None and current.next.data < data:
+        current = current.next
+
+    # Insert in middle or end
+    new_node.next = current.next
+    if current.next is not None:
+        current.next.prev = new_node
+
+    current.next = new_node
+    new_node.prev = current
+
+    return llist    
