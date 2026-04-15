@@ -225,3 +225,20 @@ def sortedInsert(llist, data):
     new_node.prev = current
 
     return llist    
+
+# Reverse a Doubly Linked List
+def reverseDoublyLinkedList(llist):
+    current = llist
+    prev = None
+
+    while current is not None:
+        # Swap next and prev pointers
+        next_node = current.next
+        current.next = prev
+        current.prev = next_node
+
+        # Move prev and current one step forward
+        prev = current
+        current = next_node
+
+    return prev  # New head of the reversed list
