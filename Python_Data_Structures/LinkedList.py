@@ -5,10 +5,6 @@ class SinglyLinkedListNode:
         self.next = None
 
 # Print Elements of a Linked List
-# SinglyLinkedListNode:
-#     int data
-#     SinglyLinkedListNode next
-#
 def printLinkedList(head):
     current = head
     while current is not None:
@@ -251,3 +247,12 @@ def preOrder(root):
     print(root.info, end=' ')   # visit root
     preOrder(root.left)         # traverse left
     preOrder(root.right)        # traverse right
+
+# Tree: postorder Traversal
+def postOrder(root):
+    if root is None:
+        return
+    
+    postOrder(root.left)        # traverse left
+    postOrder(root.right)       # traverse right
+    print(root.info, end=' ')   # visit root
