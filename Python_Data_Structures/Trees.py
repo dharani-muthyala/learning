@@ -15,3 +15,12 @@ def postOrder(root):
     postOrder(root.left)        # traverse left
     postOrder(root.right)       # traverse right
     print(root.info, end=' ')   # visit root
+
+# Tree: inorder Traversal
+def inOrder(root):
+    if root is None:
+        return
+    
+    inOrder(root.left)         # traverse left
+    print(root.info, end=' ')   # visit root
+    inOrder(root.right)        # traverse right
