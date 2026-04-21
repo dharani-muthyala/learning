@@ -24,3 +24,13 @@ def inOrder(root):
     inOrder(root.left)         # traverse left
     print(root.info, end=' ')   # visit root
     inOrder(root.right)        # traverse right
+
+# Tree: Height of a Binary Tree
+def height(root):
+    if root is None:
+        return -1
+    
+    leftHeight = height(root.left)
+    rightHeight = height(root.right)
+    
+    return max(leftHeight, rightHeight) + 1
