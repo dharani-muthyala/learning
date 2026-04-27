@@ -34,3 +34,29 @@ def height(root):
     rightHeight = height(root.right)
     
     return max(leftHeight, rightHeight) + 1
+
+# Tree: Top View of a Binary Tree
+from collections import deque
+
+def topView(root):
+    if root is None:
+        return
+
+    q = deque()
+    q.append((root, 0))
+
+    hd_map = {}
+
+    while q:
+        node, hd = q.popleft()
+
+        if hd not in hd_map:
+            hd_map[hd] = node.info
+
+        if node.left:
+            q.append((node.left, hd - 1))
+        if node.right:
+            q.append((node.right, hd + 1))
+
+    for hd in sorted(hd_map):
+        print(hd_map[hd], end=' ')
