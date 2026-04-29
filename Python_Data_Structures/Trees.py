@@ -37,6 +37,7 @@ def height(root):
 
 # Tree: Top View of a Binary Tree
 from collections import deque
+from xml.dom import Node
 
 def topView(root):
     if root is None:
@@ -77,3 +78,30 @@ def levelOrder(root):
             q.append(node.left)
         if node.right:
             q.append(node.right)
+
+# Binary Search Tree: Insertion
+def insert(self, val):   
+        new_node = Node(val)
+
+        if self.root is None:
+            self.root = new_node
+            return
+
+        current = self.root
+
+        while True:
+            if val < current.info:
+                if current.left:
+                    current = current.left
+                else:
+                    current.left = new_node
+                    break
+
+            elif val > current.info:
+                if current.right:
+                    current = current.right
+                else:
+                    current.right = new_node
+                    break
+            else:
+                break
