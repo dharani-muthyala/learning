@@ -60,3 +60,20 @@ def topView(root):
 
     for hd in sorted(hd_map):
         print(hd_map[hd], end=' ')
+
+# Tree: Level Order Traversal
+def levelOrder(root):
+    if root is None:
+        return
+
+    q = deque()
+    q.append(root)
+
+    while q:
+        node = q.popleft()
+        print(node.info, end=' ')
+
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
