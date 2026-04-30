@@ -105,3 +105,23 @@ def insert(self, val):
                     break
             else:
                 break
+
+
+# Tree: Huffman Decoding
+def decodeHuff(root, s):
+    result = ""
+    current = root
+
+    for bit in s:
+        # Move left or right based on bit
+        if bit == '0':
+            current = current.left
+        else:
+            current = current.right
+
+        # If it's a leaf node
+        if current.left is None and current.right is None:
+            result += current.data
+            current = root   # reset to root for next character
+
+    print(result)
