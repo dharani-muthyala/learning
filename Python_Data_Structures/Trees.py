@@ -125,3 +125,20 @@ def decodeHuff(root, s):
             current = root   # reset to root for next character
 
     print(result)
+
+# Tree: Binary Search Tree: Lowest Common Ancestor
+def lca(root, v1, v2):
+    current = root
+
+    while current:
+        # both values are smaller -> go left
+        if v1 < current.info and v2 < current.info:
+            current = current.left
+
+        # both values are greater -> go right
+        elif v1 > current.info and v2 > current.info:
+            current = current.right
+
+        # split happens here -> this is LCA
+        else:
+            return current
