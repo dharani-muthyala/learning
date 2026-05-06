@@ -142,3 +142,37 @@ def lca(root, v1, v2):
         # split happens here -> this is LCA
         else:
             return current
+        
+# Tree: Swap Nodes
+def swapNodes(indexes, queries):
+    # Step 1: Build tree
+    tree = {}
+    for i in range(1, len(indexes) + 1):
+        tree[i] = indexes[i - 1]
+
+    result = []
+
+    # Inorder traversal
+    def inorder(node):
+        if node == -1:
+            return []
+        left, right = tree[node]
+        return inorder(left) + [node] + inorder(right)
+
+    # Swap function
+    def swap(node, depth, k):
+        if node == -1:
+            return
+        if depth % k == 0:
+            tree[node][0], tree[node][1] = tree[node][1], tree[node][0]
+
+        left, right = tree[node]
+        swap(left, depth + 1, k)
+        swap(right, depth + 1, k)
+
+    # Process each query
+    for k in queries:
+        swap(1, 1, k)
+        result.append(inorder(1))
+
+    return result
