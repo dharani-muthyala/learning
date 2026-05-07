@@ -176,3 +176,23 @@ def swapNodes(indexes, queries):
         result.append(inorder(1))
 
     return result
+
+# Tree: Is This a Binary Search Tree?
+def check_binary_search_tree_(root):
+
+    def is_bst(node, minimum, maximum):
+
+        if node is None:
+            return True
+
+        # BST condition
+        if node.data <= minimum or node.data >= maximum:
+            return False
+
+        # Check left and right subtrees
+        return (
+            is_bst(node.left, minimum, node.data) and
+            is_bst(node.right, node.data, maximum)
+        )
+
+    return is_bst(root, float('-inf'), float('inf'))
