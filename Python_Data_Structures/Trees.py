@@ -196,3 +196,114 @@ def check_binary_search_tree_(root):
         )
 
     return is_bst(root, float('-inf'), float('inf'))
+
+# Tree: Self Balancing Tree
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.height = 1
+
+
+def height(node):
+    if not node:
+        return 0
+    return node.height
+
+
+def balance_factor(node):
+    if not node:
+        return 0
+    return height(node.left) - height(node.right)
+
+
+def right_rotate(y):
+    x = y.left
+    T2 = x.right
+
+    x.right = y
+    y.left = T2
+
+    y.height = 1 + max(height(y.left), height(y.right))
+    x.height = 1 + max(height(x.left), height(x.right))
+
+    return x
+
+
+def left_rotate(x):
+    y = x.right
+    T2 = y.left
+
+    y.left = x
+    x.right = T2
+
+    x.height = 1 + max(height(x.left), height(x.right))
+    y.height = 1 + max(height(y.left), height(y.right))
+
+    return y
+
+
+def insert(root, key):
+    if not root:
+        return Node(key)
+
+    if key < root.key:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+
+    root.height = 1 + max(height(root.left), height(root.right))
+
+    bf = balance_factor(root)
+
+    # LL
+    if bf > 1 and key < root.left.key:
+        return right_rotate(root)
+
+    # RR
+    if bf < -1 and key > root.right.key:
+        return left_rotate(root)
+
+    # LR
+    if bf > 1 and key > root.left.key:
+        root.left = left_rotate(root.left)
+        return right_rotate(root)
+
+    # RL
+    if bf < -1 and key < root.right.key:
+        root.right = right_rotate(root.right)
+        return left_rotate(root)
+
+    return root
+
+
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(f"{root.key}(BF={balance_factor(root)})", end=" ")
+        inorder(root.right)
+
+
+def preorder(root):
+    if root:
+        print(f"{root.key}(BF={balance_factor(root)})", end=" ")
+        preorder(root.left)
+        preorder(root.right)
+
+
+n = int(input())
+arr = list(map(int, input().split()))
+x = int(input())
+
+root = None
+
+for num in arr:
+    root = insert(root, num)
+
+root = insert(root, x)
+
+inorder(root)
+print()
+
+preorder(root)
