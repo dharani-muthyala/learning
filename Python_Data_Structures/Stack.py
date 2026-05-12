@@ -31,3 +31,29 @@ def getMax(operations):
             result.append(max_stack[-1])
 
     return result
+
+# Balanced Brackets
+def isBalanced(s):
+    stack = []
+
+    pairs = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    }
+
+    for ch in s:
+
+        # Opening brackets
+        if ch in "({[":
+            stack.append(ch)
+
+        # Closing brackets
+        else:
+
+            if not stack or stack[-1] != pairs[ch]:
+                return "NO"
+
+            stack.pop()
+
+    return "YES" if not stack else "NO"
