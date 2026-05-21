@@ -89,3 +89,35 @@ def equalStacks(h1, h2, h3):
         else:
             sum3 -= h3[k]
             k += 1
+
+# Game of Two Stacks
+def twoStacks(x, a, b):
+
+    total = 0
+    count = 0
+    i = 0
+    j = 0
+
+    # Take elements from stack a first
+    while i < len(a) and total + a[i] <= x:
+        total += a[i]
+        i += 1
+
+    count = i
+
+    # Try adding elements from b
+    while j < len(b):
+
+        total += b[j]
+        j += 1
+
+        # Remove from a if total exceeds x
+        while total > x and i > 0:
+            i -= 1
+            total -= a[i]
+
+        # If still valid, update answer
+        if total <= x:
+            count = max(count, i + j)
+
+    return count            
