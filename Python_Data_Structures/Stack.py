@@ -57,3 +57,35 @@ def isBalanced(s):
             stack.pop()
 
     return "YES" if not stack else "NO"
+
+# Equal Stacks
+def equalStacks(h1, h2, h3):
+
+    sum1 = sum(h1)
+    sum2 = sum(h2)
+    sum3 = sum(h3)
+
+    i = j = k = 0
+
+    while True:
+
+        # If any stack becomes empty
+        if i == len(h1) or j == len(h2) or k == len(h3):
+            return 0
+
+        # Equal height found
+        if sum1 == sum2 == sum3:
+            return sum1
+
+        # Remove from tallest stack
+        if sum1 >= sum2 and sum1 >= sum3:
+            sum1 -= h1[i]
+            i += 1
+
+        elif sum2 >= sum1 and sum2 >= sum3:
+            sum2 -= h2[j]
+            j += 1
+
+        else:
+            sum3 -= h3[k]
+            k += 1
