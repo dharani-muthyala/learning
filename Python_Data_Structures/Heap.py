@@ -33,3 +33,40 @@ def minimumAverage(customers):
         total_wait += (time - arrival)
 
     return total_wait // n
+
+# QHEAP1
+
+heap = []
+removed = {}
+
+Q = int(input())
+
+for _ in range(Q):
+
+    query = list(map(int, input().split()))
+
+    # Insert
+    if query[0] == 1:
+
+        heapq.heappush(heap, query[1])
+
+    # Delete
+    elif query[0] == 2:
+
+        val = query[1]
+        removed[val] = removed.get(val, 0) + 1
+
+    # Print minimum
+    else:
+
+        # Remove deleted elements from top
+        while heap and removed.get(heap[0], 0):
+
+            removed[heap[0]] -= 1
+
+            if removed[heap[0]] == 0:
+                del removed[heap[0]]
+
+            heapq.heappop(heap)
+
+        print(heap[0])
