@@ -70,3 +70,24 @@ for _ in range(Q):
             heapq.heappop(heap)
 
         print(heap[0])
+
+# Jesse and Cookies
+
+def cookies(k, A):
+
+    heapq.heapify(A)
+
+    operations = 0
+
+    while len(A) > 1 and A[0] < k:
+
+        first = heapq.heappop(A)
+        second = heapq.heappop(A)
+
+        new_cookie = first + (2 * second)
+
+        heapq.heappush(A, new_cookie)
+
+        operations += 1
+
+    return operations if A[0] >= k else -1
