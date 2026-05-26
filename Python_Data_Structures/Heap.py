@@ -91,3 +91,38 @@ def cookies(k, A):
         operations += 1
 
     return operations if A[0] >= k else -1
+
+# Find the Running Median
+
+def runningMedian(a):
+
+    lower = []   # max heap (store negative values)
+    upper = []   # min heap
+
+    result = []
+
+    for num in a:
+
+        # Insert into heaps
+        if not lower or num <= -lower[0]:
+            heapq.heappush(lower, -num)
+        else:
+            heapq.heappush(upper, num)
+
+        # Balance heaps
+        if len(lower) > len(upper) + 1:
+            heapq.heappush(upper, -heapq.heappop(lower))
+
+        elif len(upper) > len(lower):
+            heapq.heappush(lower, -heapq.heappop(upper))
+
+        # Calculate median
+        if len(lower) == len(upper):
+            median = (-lower[0] + upper[0]) / 2
+
+        else:
+            median = float(-lower[0])
+
+        result.append(median)
+
+    return result
