@@ -3,3 +3,4 @@ __pycache__/
 *.pyo
 .env
 venv/
+base64_output.txt
